@@ -1,3 +1,5 @@
+"use strict";
+
 // BUSCA BINÁRIA
 // Binary search
 
