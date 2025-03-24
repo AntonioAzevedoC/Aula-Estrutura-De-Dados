@@ -48,8 +48,16 @@ const recursiveFatorial = function (n) {
 };
 
 console.log(recursiveFatorial(5));
-console.log(recursiveFatorial(3));
-console.log(recursiveFatorial(10));
-console.log(recursiveFatorial(1));
-console.log(recursiveFatorial(0));
-console.log(recursiveFatorial(-5));
+// console.log(recursiveFatorial(3));
+// console.log(recursiveFatorial(10));
+// console.log(recursiveFatorial(1));
+// console.log(recursiveFatorial(0));
+// console.log(recursiveFatorial(-5));
+
+// You could also make a more concise function
+const conciseFatorial = function (n) {
+  if (n <= 1) return 1;
+  return n * conciseFatorial(n - 1);
+};
+
+// console.log(conciseFatorial(5));
