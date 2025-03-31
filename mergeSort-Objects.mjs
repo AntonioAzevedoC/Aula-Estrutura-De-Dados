@@ -1,13 +1,11 @@
-// Merge-Sort!
-// Merge sort divides its array into many (MANY) arrays, dividing the problem in many sub-problems that can be resolved through recursion. After all sub-problems are resolved the arrays are merged
-// It consumes a LOT of memory and takes a while to process, so it shouldn't be used in most situations
-// Look at an example:
+// Merge-sort with objects!
+// It isn't really that different from a normal mergeSort
 
 let compositions = 0,
   divisions = 0,
   junctions = 0;
 
-const mergeSort = function (arr) {
+const mergeSortObjects = function (arr, fnComp) {
   // To be divided, the array must have at least two values
   if (arr.length < 2) return arr;
 
@@ -18,11 +16,10 @@ const mergeSort = function (arr) {
   let left = arr.slice(0, half);
   let right = arr.slice(half); // When a second parameter isn't given to .slice(), it defaults to the end of the array
   divisions++;
-  console.log("left: ", left, "right: ", right); // Use this to understand the slicings, idiot
 
   // Recursion on the new arrays, they are divided until they return a single value
-  left = mergeSort(left);
-  right = mergeSort(right);
+  left = mergeSortObjects(left, fnComp);
+  right = mergeSortObjects(right, fnComp);
 
   // Joining the left and right arrays
   let posLeft = 0,
@@ -34,7 +31,7 @@ const mergeSort = function (arr) {
     compositions++;
     // If the left position is lower, it is added to the result array, if it is higher, right position is added to the result array
     // Index positions are also incremented
-    if (left[posLeft] < right[posRight]) {
+    if (fnComp(left[posLeft], right[posRight])) {
       result.push(left[posLeft]);
       posLeft++;
     } else {
@@ -42,7 +39,6 @@ const mergeSort = function (arr) {
       posRight++;
     }
   }
-  // console.log("result: ", result);
 
   // Defining what array has leftovers
   let leftovers = [];
@@ -55,20 +51,20 @@ const mergeSort = function (arr) {
     // leftover values are are copied to the leftovers array, from posRight to the end of the right array
     leftovers = right.slice(posRight);
   }
-  // console.log("leftovers: ", leftovers);
 
   // the final array will be the concatenation of the result array and the leftovers array
   junctions++;
   return [...result, ...leftovers];
 };
 
-let nbrs = [77, 55, 22, 11, 99, 33, 66, 44, 88, 0];
+import { objMotoristas } from "./data/motoristas-obj-desord.mjs";
 
-console.log("-------------------------------------------------------");
-console.log(
-  `The array [ ${nbrs} ] is unsorted.\nThe method merge-sort sorted the array: ${mergeSort(
-    nbrs
-  )}.\nIt took ${compositions} compositions, ${divisions} divisions and ${junctions} junctions.`
-);
+// When sorting strings, it follows the ASCII table (so `´^~¨ stays at the end, and numbers stay at the start)
+const SortRazaoSocial = (left, right) => left.razao_social < right.razao_social;
 
-// This is actually a bit complex, I'll watch a video about it later
+console.time("Sorting time");
+let sortedArray = mergeSortObjects(objMotoristas, SortRazaoSocial);
+let memoryUseMB = process.memoryUsage().heapUsed / 1024 / 1024;
+console.time("Sorting Time");
+
+console.log(sortedArray, "\n", memoryUseMB);
