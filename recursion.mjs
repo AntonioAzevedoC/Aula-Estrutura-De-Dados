@@ -47,7 +47,7 @@ const recursiveFatorial = function (n) {
   return result;
 };
 
-console.log(recursiveFatorial(5));
+// console.log(recursiveFatorial(5));
 // console.log(recursiveFatorial(3));
 // console.log(recursiveFatorial(10));
 // console.log(recursiveFatorial(1));
@@ -60,4 +60,4 @@ const conciseFatorial = function (n) {
   return n * conciseFatorial(n - 1);
 };
 
-// console.log(conciseFatorial(5));
+console.log(conciseFatorial(5));
