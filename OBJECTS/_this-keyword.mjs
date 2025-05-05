@@ -1,3 +1,5 @@
+// Hey, this keyword study, I definetly don't know anything about it
+
 // The "this" keyword allows you to find methods and properties of a class/object while inside the very class/object
 // This happens because the "this" keyword points to the class/object itself
 
