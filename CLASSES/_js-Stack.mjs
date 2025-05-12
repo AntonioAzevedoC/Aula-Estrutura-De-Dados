@@ -11,8 +11,47 @@ export default class Stack {
     this.#data = [];
   }
 
-  // method for inserting data in the  "#data" variable
+  // method for inserting data in the "#data" variable
   insertData(val) {
     this.#data.push(val);
   }
+
+  // method for removing data in the "#data" variable
+  removeData(val) {
+    return this.#data.pop(val); // Returning the removed value
+  }
+
+  // method that returns "#data" as a JSON string
+  print() {
+    return JSON.stringify(this.#data);
+  }
+
+  // method that returns the last position in "#data"
+  lastPosition() {
+    return this.#data[this.#data.length - 1];
+  }
+
+  get getData() {
+    return this.#data;
+  }
+
+  get isEmpty() {
+    return this.#data.length === 0;
+  }
 }
+
+const a1 = new Stack();
+
+console.log(a1.isEmpty);
+a1.insertData(10);
+a1.insertData(11);
+a1.insertData(12);
+console.log(a1.lastPosition());
+a1.insertData(13);
+console.log(a1.getData);
+console.log(a1.print());
+console.log(a1.removeData());
+console.log(a1.removeData());
+console.log(a1.removeData());
+console.log(a1.getData);
+console.log(a1.isEmpty);
