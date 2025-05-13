@@ -1,7 +1,7 @@
 "use strict";
 
 // Using stacks in classes
-// Stacks follow the FIFO structure (First in, first out), that means that whatever is placed in the stack last must be the first thing to be removed from the stack
+// Stacks follow the LIFO structure (Last in, first out), that means that whatever is placed in the stack last must be the first thing to be removed from the stack
 
 export default class Stack {
   // Generic "#data" variable
