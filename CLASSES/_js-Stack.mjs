@@ -39,19 +39,3 @@ export default class Stack {
     return this.#data.length === 0;
   }
 }
-
-const a1 = new Stack();
-
-console.log(a1.isEmpty);
-a1.insertData(10);
-a1.insertData(11);
-a1.insertData(12);
-console.log(a1.lastPosition());
-a1.insertData(13);
-console.log(a1.getData);
-console.log(a1.print());
-console.log(a1.removeData());
-console.log(a1.removeData());
-console.log(a1.removeData());
-console.log(a1.getData);
-console.log(a1.isEmpty);
