@@ -50,12 +50,12 @@ export default class Deque {
 
   // Method that prints the data
   print() {
-    let output = "[ \n";
+    let output = "[ ";
     for (let i = 0; i < this.#data.length; i++) {
       // Adding commas if the output isn't equal to what it is at the start
       // I added the \n, so that's why I removed this line
       //   if (output !== "[ \n") output += ", ";
-
+      if (output === "[ ") output += "\n";
       // Adding line to the output
       output += `(${i}): ${this.#data[i]},\n`;
     }
