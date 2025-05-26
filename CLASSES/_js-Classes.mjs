@@ -8,6 +8,10 @@ class Robot {} // The example wasn't that good, it just used general properties 
 
 // Start class names with an uppercase letter
 export default class Shape {
+  // _data - Property should
+  // #data - Property can be read and changed only with methods inside the class
+  // data  - Property can be read and changed anywhere, even with methods outside the class
+
   // Attributes! To make them private add a # to the variable
   #width;
   #height;

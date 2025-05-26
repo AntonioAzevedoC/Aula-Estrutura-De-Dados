@@ -2,7 +2,7 @@
 
 // Lanes! They work like lanes! The first one to cet in is the first one to go out
 // FIFO - First in, first out
-// There are some structures, such as DECK, that assign priorities to lanes, so that certaing values may be removed from the lane first
+// There are some structures, such as DEQUE, that assign priorities to lanes, so that certaing values may be removed from the lane first
 
 export default class Queue {
   // Generic "#data" variable
