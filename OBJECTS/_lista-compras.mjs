@@ -41,3 +41,8 @@ removido = listaCompras.removeFront();
 console.log(removido);
 
 console.log(listaCompras.print());
+
+// Peeking
+console.log(
+  `Item na frente: ${listaCompras.peekFront()}\nItem no fim: ${listaCompras.peekBack()}`
+);
