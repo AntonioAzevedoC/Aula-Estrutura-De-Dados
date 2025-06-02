@@ -62,11 +62,27 @@ export default class LinkedList {
 
     // 4° Caso - "Lista" não vazia, inserção na posição "pos"
     else {
-      let before = this.#head;
+      let before = this.#head; // Definindo "anterior" como o primeiro item da lista
 
+      // Fazendo loop até a posição requistada
       for (let i = 1; i < pos; i++) {
-        before = before.next;
+        before = before.next; // "Before" recebe o item na posição "pos"
       }
+
+      let after = before.next; // "After" recebe o item na posição depois da posição "pos"
+
+      inserted.next = after; // Tornando o item depois de "inserted" o item "After"
+
+      before.next = inserted; // Tornando o item depois de "before" o item "inserted"
+
+      // Exemplo:
+      // Inicial: A,B,C,D,E
+      // Inserir X na posição 3
+      // before: A -> B,C
+      // after: D
+      // X next: D
+      // before next: X
+      // Final: A,B,C,X,D,E
     }
 
     this.#count++;
