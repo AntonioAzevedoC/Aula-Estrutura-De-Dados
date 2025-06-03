@@ -87,4 +87,124 @@ export default class LinkedList {
 
     this.#count++;
   }
+
+  // Atalho para inserção na primeira posição (head)
+  inserHead(val) {
+    this.insert(0, val);
+  }
+
+  // Atalho para inserção na última posição (tail)
+  insertTail(val) {
+    this.insert(this.count, val);
+  }
+
+  // Método para remoção de um nó na lista
+  remove(pos) {
+    // 1° case => In case the position given doesn't exist
+    if (this.isEmpty || pos < 0 || pos > this.#count - 1) return undefined;
+
+    let removed;
+    // 2° case => In case the desired position is head
+    if (pos === 0) {
+      removed = this.#head;
+      this.#head = this.#head.next;
+
+      // In case there is only one position in the linked list, #tail must also be updated
+      if (this.#count === 1) this.#tail = null;
+    }
+
+    // 3° case => In case it is any other position
+    else {
+      let before = this.#head;
+
+      for (let i = 1; i < pos; i++) {
+        before = before.next;
+      }
+
+      removed = before.next;
+
+      let after = before.next.next;
+      before.next = after;
+
+      if (pos === this.#count - 1) {
+        this.#tail = before;
+      }
+    }
+
+    this.#count--;
+    return removed;
+  }
+
+  // Atalho para remover head
+  removeHead() {
+    return this.remove(0);
+  }
+
+  // Atalho para remover o rabo
+  removeTail() {
+    return this.remove(this.#count - 1);
+  }
+
+  // Method to find the position of a value
+  indexOf(val) {
+    if (this.isEmpty) return -1; // In case the list is empty
+
+    let node = this.#head;
+
+    // Looping the list
+    for (let i = 0; i < this.#count; i++) {
+      if (node.data === val) return i; // If value is found
+      else node = node.next; // If it isn't
+    }
+    return -1; // In case the value isn't in the list
+  }
+
+  // Method that shows the value of a position
+  peekPos(pos) {
+    // 1° case => In case the position given doesn't exist
+    if (this.isEmpty || pos < 0 || pos > this.#count) return undefined;
+
+    let peek;
+    // 2° case => In case the desired position is head
+    if (pos === 0) {
+      peek = this.#head.data;
+    }
+
+    // 3° case => In case it is any other position
+    else {
+      let node = this.#head;
+
+      for (let i = 1; i < pos; i++) {
+        node = node.next;
+      }
+
+      peek = node.data;
+    }
+
+    return peek;
+  }
+
+  // Atalho para encontrar valor em head
+  peekHead() {
+    return this.peekPos(0);
+  }
+
+  // Atalho para encontrar valor em tail
+  peekTail() {
+    return this.peekPos(this.#count);
+  }
+
+  // Method that prints the list
+  print() {
+    let output = "(\n";
+    let node = this.#head;
+    for (let i = 0; i < this.#count; i++) {
+      output += `[${i}]: ${node.data}\n`;
+      node = node.next;
+    }
+    output += `), count=${this.#count}`;
+    return output;
+  }
 }
+
+// huawei
